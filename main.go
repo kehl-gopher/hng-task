@@ -2,8 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -33,7 +35,11 @@ func main() {
 		w.Write(dt)
 	})
 
+	port := os.Getenv("PORT") // Get the port from environment variables
+	if port == "" {
+		port = "8080" // Default to 8080 if not set
+	}
 	log.Println("Server connected successfully")
-	err := http.ListenAndServe(":8080", srv)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), srv)
 	log.Fatal(err)
 }
