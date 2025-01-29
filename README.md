@@ -1,80 +1,94 @@
-Here is the updated `README.md` reflecting the exact response format you requested:
+# HNG Stage 0 Backend Task - Public API
 
----
+## Description
+This is a simple public API built using **Go** for the HNG Stage 0 Backend Task. The API returns basic information such as:
+- My registered email address on the HNG12 Slack workspace.
+- The current datetime in **ISO 8601** format (UTC).
+- The GitHub URL of this project's codebase.
 
-# HNG12 Backend - Stage 0 Task
+The API is publicly accessible and follows RESTful conventions, handling **CORS** appropriately.
 
-Welcome to the backend task for HNG12! This project is a simple API developed using Go, which returns basic information about the developer.
-
-## Project Description
-
-This API returns:
-- The registered email address (used to register on the HNG12 Slack workspace).
-- The current datetime in ISO 8601 format (UTC).
-- The GitHub URL of the project’s codebase.
-
-## Tech Stack
-
-- **Programming Language/Framework**: Go
-- **Deployment**: The API is hosted on a publicly accessible endpoint.
+## Features
+- Accepts **GET** requests.
+- Returns JSON responses in the correct format.
+- The `current_datetime` field is dynamically generated in **ISO 8601** format (UTC).
+- Deployed to a publicly accessible endpoint.
+- Fast response time (< 500ms).
 
 ## API Documentation
 
-### Endpoint
+### **Base URL**
+```
+https://widespread-odelinda-hng-cc23a786.koyeb.app
+```
 
-- **URL**: `GET <your-url>`
+### **Endpoints**
 
-### Request
+#### **GET /**
+Returns a welcome message.
 
-- Method: `GET`
-- No request body is required.
+**Response:**
+```json
+{
+  "message": "Please visit the /me endpoint for user data"
+}
+```
 
-### Response (200 OK)
+#### **GET /me**
+Returns user details, including email, current datetime (UTC), and GitHub repository URL.
 
+**Response:**
 ```json
 {
   "email": "kelanidarasimi9@gmail.com",
-  "current_datetime": "2025-01-29T13:02:28Z",
+  "current_datetime": "2025-01-30T09:30:00Z",
   "github_url": "https://github.com/kehl-gopher/hng-task"
 }
 ```
 
-### Response Fields:
+## Installation & Setup
 
-- **email**: Your registered email address.
-- **current_datetime**: The current datetime in ISO 8601 format (UTC).
-- **github_url**: The URL of your project’s GitHub repository.
+### **Prerequisites**
+- Go installed ([Download Go](https://go.dev/dl/))
+- Git installed ([Download Git](https://git-scm.com/downloads))
+
+### **Running Locally**
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/kehl-gopher/hng-task.git
+   ```
+2. Navigate to the project folder:
+   ```sh
+   cd hng-task
+   ```
+3. Install dependencies (if any):
+   ```sh
+   go mod tidy
+   ```
+4. Run the server:
+   ```sh
+   go run main.go
+   ```
+5. The API will be available at:
+   ```sh
+   http://localhost:8080/me
+   ```
 
 ## Deployment
-
-The API is deployed and can be accessed at a publicly available URL. You can access it by visiting the endpoint:
-
-- `https://widespread-odelinda-hng-cc23a786.koyeb.app/me`
-
-## Code Structure
-
-- **main.go**: The main entry point for the application where the server and routes are set up.
-- **README.md**: This file.
-- **go.mod**: The Go module file for dependencies.
-
-## Example Usage
-
-To get the information, simply send a `GET` request to the endpoint:
-
-```bash
-curl -X GET <your-url>
+The API is deployed and accessible at:
+```
+https://widespread-odelinda-hng-cc23a786.koyeb.app/me
 ```
 
-The response will be in the following format:
+## Technologies Used
+- **Programming Language:** Go
+- **Web Framework:** `net/http`
+- **Hosting:** Koyeb
 
-```json
-{
-  "email": "kelanidarasimi9@gmail.com",
-  "current_datetime": "2025-01-29T13:02:28Z",
-  "github_url": "https://github.com/kehl-gopher/hng-task"
-}
-```
+## Hiring Backlink
+Interested in hiring a **Golang Developer**? Check out:
+[Hire Golang Developers](https://hng.tech/hire/golang-developers)
 
-## Backlink to HNG Tech
+---
 
-For more information on hiring developers in Go, visit: [HNG Tech - Hire Go Developers](https://hng.tech/hire/golang-developers)
+**Author:** Kelani Darasimi ([@kehl-gopher](https://github.com/kehl-gopher))
