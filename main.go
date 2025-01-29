@@ -13,6 +13,16 @@ func main() {
 
 	srv := http.NewServeMux()
 
+	corsMiddleWare := func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+			w.Header().Set("Content-Type", "application/json")
+			next.ServeHTTP(w, r)
+		})
+	}
 	srv.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Please visit the /me endpoint for user data"))
 	})
@@ -31,7 +41,6 @@ func main() {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-		w.Header().Set("Content-Type", "application/json")
 		w.Write(dt)
 	})
 
@@ -40,6 +49,6 @@ func main() {
 		port = "8080" // Default to 8080 if not set
 	}
 	log.Printf("Server connected successfully on: %s", port)
-	err := http.ListenAndServe(fmt.Sprintf(":%s", port), srv)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), corsMiddleWare(srv))
 	log.Fatal(err)
 }
