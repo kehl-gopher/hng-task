@@ -13,10 +13,10 @@ func main() {
 
 	srv := http.NewServeMux()
 
-	srv.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+	srv.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Please visit the /me endpoint for user data"))
 	})
-	srv.HandleFunc("GET /me", func(w http.ResponseWriter, r *http.Request) {
+	srv.HandleFunc("/me", func(w http.ResponseWriter, r *http.Request) {
 		me := struct {
 			Email           string `json:"email"`
 			CurrentDateTime string `json:"current_datetime"`
