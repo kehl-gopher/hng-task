@@ -39,7 +39,7 @@ func main() {
 	if port == "" {
 		port = "8080" // Default to 8080 if not set
 	}
-	log.Println("Server connected successfully")
+	log.Printf("Server connected successfully on: %s", port)
 	err := http.ListenAndServe(fmt.Sprintf(":%s", port), srv)
 	log.Fatal(err)
 }
