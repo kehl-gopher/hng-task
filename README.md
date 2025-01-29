@@ -49,7 +49,7 @@ This API returns:
 
 The API is deployed and can be accessed at a publicly available URL. You can access it by visiting the endpoint:
 
-- `<your-url>`
+- `https://widespread-odelinda-hng-cc23a786.koyeb.app/me`
 
 ## Code Structure
 
