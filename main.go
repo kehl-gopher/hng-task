@@ -34,6 +34,6 @@ func main() {
 	})
 
 	log.Println("Server connected successfully")
-	err := http.ListenAndServe(":8000", srv)
+	err := http.ListenAndServe("0.0.0.0:8000", srv)
 	log.Fatal(err)
 }
