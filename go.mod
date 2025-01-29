@@ -1,3 +1,3 @@
-module kehl-gopher/hng-task.git
+module github.com/kehl-gopher/hng-task
 
 go 1.20
